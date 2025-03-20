@@ -116,7 +116,7 @@ export default function RootLayout({
           {children}
         </ConsentManager>
         {/* <script src="https://widget.trustmary.com/g0frZ_zB"></script> */}
-        <script src="https://widget.trustmary.com/KWmPmkK1_"></script>
+        {/* <script src="https://widget.trustmary.com/KWmPmkK1_"></script> */}
 
       </body>
     </html>

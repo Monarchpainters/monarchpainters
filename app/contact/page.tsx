@@ -5,21 +5,21 @@ import { FaTiktok } from 'react-icons/fa';
 import { motion, AnimatePresence } from 'framer-motion';
 import Footer from '@/components/footer';
 import emailjs from '@emailjs/browser';
+import { AlertDialog, AlertDialogAction, AlertDialogCancel, AlertDialogContent, AlertDialogDescription, AlertDialogFooter, AlertDialogHeader, AlertDialogTitle } from '@/components/ui/alert-dialog';
 
 function App() {
   const form = useRef<HTMLFormElement>(null);
+  const [showAlert, setShowAlert] = useState(false);
+  const [alertMessage, setAlertMessage] = useState({
+    title: '',
+    description: ''
+  });
   const [formData, setFormData] = useState({
     name: '',
     email: '',
+    phone: '',
     project: '',
-    services: {
-      websiteDesign: true,
-      uxDesign: true,
-      userResearch: false,
-      contentCreation: false,
-      strategyConsulting: false,
-      other: false
-    }
+    
   });
 
   const [activeField, setActiveField] = useState<string | null>(null);
@@ -38,6 +38,8 @@ function App() {
       setFormData(prev => ({ ...prev, name: value }));
     } else if (name === 'user_email') {
       setFormData(prev => ({ ...prev, email: value }));
+    } else if (name === 'user_phone') {
+      setFormData(prev => ({ ...prev, phone: value }));
     } else if (name === 'message') {
       setFormData(prev => ({ ...prev, project: value }));
     }
@@ -53,44 +55,37 @@ function App() {
 
     try {
       const result = await emailjs.sendForm(
-        'service_o6is7uj',
-        'template_g4wyoks',
+        'service_phr7fot',
+        'template_p1r00so',
         form.current,
-        'mmRjUSitj7ijVe0N8'
+        'kxChz_wHnv-TGJ3gB'
       );
 
       if (result.status === 200) {
         setSubmitStatus('success');
-        
-        // Reset form using a single state update
         setFormData({
           name: '',
           email: '',
+          phone: '',
           project: '',
-          services: {
-            websiteDesign: false,
-            uxDesign: false,
-            userResearch: false,
-            contentCreation: false,
-            strategyConsulting: false,
-            other: false
-          }
         });
+        form.current.reset();
+        setAlertMessage({
+          title: 'Success!',
+          description: 'Your message has been sent successfully. We will get back to you soon.'
+        });
+        setShowAlert(true);
       } else {
         throw new Error('Failed to send email');
       }
-
-      // Clear form fields
-      if (form.current) {
-        form.current.reset();
-      }
-
-      // Show success message
-      alert('Message sent successfully!');
     } catch (error) {
       console.error('FAILED...', error);
       setSubmitStatus('error');
-      alert('Failed to send message. Please try again.');
+      setAlertMessage({
+        title: 'Error',
+        description: 'Failed to send message. Please try again.'
+      });
+      setShowAlert(true);
     }
   };
 
@@ -155,6 +150,17 @@ function App() {
  
   return (
     <div className="min-h-screen bg-[#d9c2d4] flex flex-col items-center justify-center overflow-hidden relative">
+      <AlertDialog open={showAlert} onOpenChange={setShowAlert}>
+        <AlertDialogContent>
+          <AlertDialogHeader>
+            <AlertDialogTitle>{alertMessage.title}</AlertDialogTitle>
+            <AlertDialogDescription>{alertMessage.description}</AlertDialogDescription>
+          </AlertDialogHeader>
+          <AlertDialogFooter>
+            <AlertDialogAction>OK</AlertDialogAction>
+          </AlertDialogFooter>
+        </AlertDialogContent>
+      </AlertDialog>
       {/* Animated background elements */}
       <div className="absolute inset-0 overflow-hidden">
         <motion.div 
@@ -336,16 +342,31 @@ function App() {
                 <motion.div variants={formItemVariants}>
                   <div className="relative group">
                     <motion.input
+                      type="tel"
+                      name="user_phone"
+                      value={formData.phone}
+                      onChange={handleInputChange}
+                      onFocus={() => handleFocus('mobile')}
+                      onBlur={handleBlur}
+                      placeholder="Your mobile number"
+                      className="w-full bg-[#ede2db]/30 border-2 border-[#711f50]/20 rounded-xl px-6 py-4 text-[#711f50] placeholder:text-[#711f50]/50 focus:outline-none focus:border-[#e6ab65]/70 transition-all duration-300"
+                      required
+                    />
+                  </div>
+                </motion.div>
+
+                <motion.div variants={formItemVariants}>
+                  <div className="relative group">
+                    <motion.input
                       type="email"
                       name="user_email"
                       value={formData.email}
                       onChange={handleInputChange}
                       onFocus={() => handleFocus('email')}
                       onBlur={handleBlur}
-                      placeholder="Your email"
+                      placeholder="Your email (optional)"
                       className="w-full bg-[#ede2db]/30 border-2 border-[#711f50]/20 rounded-xl px-6 py-4 text-[#711f50] placeholder:text-[#711f50]/50 focus:outline-none focus:border-[#e6ab65]/70 transition-all duration-300"
-                      required
-                      animate={activeField === 'email' ? { scale: 1.02 } : { scale: 1 }}
+                      
                     />
                   </div>
                 </motion.div>
@@ -358,8 +379,8 @@ function App() {
                       onChange={handleInputChange}
                       onFocus={() => handleFocus('project')}
                       onBlur={handleBlur}
-                      placeholder="Tell us about your project..."
-                      className="w-full bg-[#ede2db]/30 border-2 border-[#711f50]/20 rounded-xl px-6 py-4 text-[#711f50] placeholder:text-[#711f50]/50 focus:outline-none focus:border-[#e6ab65]/70 transition-all duration-300 min-h-[120px] resize-none"
+                      placeholder="Tell us about your project"
+                      className="w-full bg-[#ede2db]/30 border-2 border-[#711f50]/20 rounded-xl px-6 py-4 text-[#711f50] placeholder:text-[#711f50]/50 focus:outline-none focus:border-[#e6ab65]/70 transition-all duration-300 min-h-[150px] resize-none"
                       animate={activeField === 'project' ? { scale: 1.02 } : { scale: 1 }}
                     />
                   </div>
