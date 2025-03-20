@@ -55,10 +55,10 @@ function App() {
 
     try {
       const result = await emailjs.sendForm(
-        'service_phr7fot',
-        'template_p1r00so',
+        process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID!,
+        process.env.NEXT_PUBLIC_EMAILJS_TEMPLATE_ID!,
         form.current,
-        'kxChz_wHnv-TGJ3gB'
+        process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY!
       );
 
       if (result.status === 200) {
