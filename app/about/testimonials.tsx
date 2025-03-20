@@ -2,9 +2,9 @@ import React from 'react';
 
 function Testimonials() {
   const trustmaryWidgetCode = `
-    <div class="trustmary-widget" data-trustmary-widget="g0frZ_zB7"></div>
-    <script src="https://widget.trustmary.com/g0frZ_zB"></script>
-    
+    <div class="trustmary-widget" data-trustmary-widget="KWmPmkK1_"></div>
+    <script src="https://widget.trustmary.com/KWmPmkK1_"></script>
+
   `;
   return (
     <section className="w-full py-16 bg-[#ede2db]">

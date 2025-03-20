@@ -61,6 +61,20 @@ export default function RootLayout({
   return (
     <html lang="en">
       <head>
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `
+              (function (w,d,s,o,r,js,fjs) {
+                w[r]=w[r]||function() {(w[r].q = w[r].q || []).push(arguments)}
+                w[r]('app', 'DN9v-ZA4Aa');
+                if(d.getElementById(o)) return;
+                js = d.createElement(s), fjs = d.getElementsByTagName(s)[0];
+                js.id = o; js.src = 'https://embed.trustmary.com/embed.js';
+                js.async = 1; fjs.parentNode.insertBefore(js, fjs);
+              }(window, document, 'script', 'trustmary-embed', 'tmary'));
+            `
+          }}
+        />
         <link
           rel="preload"
           href="/fonts/LTMuseum-Bold.ttf"
@@ -101,6 +115,9 @@ export default function RootLayout({
           <Navbar />
           {children}
         </ConsentManager>
+        {/* <script src="https://widget.trustmary.com/g0frZ_zB"></script> */}
+        <script src="https://widget.trustmary.com/KWmPmkK1_"></script>
+
       </body>
     </html>
   )

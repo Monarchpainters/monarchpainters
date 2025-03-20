@@ -1,11 +1,12 @@
 "use client";
 
 import Footer from "@/components/footer";
-import Testimonials from "@/components/testimonials";
+// import Testimonials from "@/components/testimonials";
 import { motion } from "framer-motion";
 import Image from "next/image";
 import { aboutPageData } from "@/data/about";
 import Link from "next/link";
+import Testimonials from "./testimonials";
 
 export default function About() {
   const { teamSection, whatWeDoSection, ctaSection } = aboutPageData;

@@ -27,7 +27,7 @@ import Hero2 from "@/components/hero2";
 import Expertise from "@/components/Expertise ";
 import Features2 from "@/components/Features2";
 import Tools from "@/components/tools";
-import Testimonials from "@/components/testimonials";
+
 // import { Testimonials } from "@/components/testimonials";
 
 // import { Preview } from "@/components/demo2";
