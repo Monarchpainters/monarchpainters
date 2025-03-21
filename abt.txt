@@ -104,3 +104,6 @@ Monarch Painters is the first choice for those seeking a trustworthy, high-quali
     Figma Design File: To visually represent the design before development.
     Documentation & Code Comments: Clear guidelines and in-code documentation for future updates.
     Deployment Ready: Optimized for deployment on platforms like Vercel or Netlify.
+
+
+    final commit
