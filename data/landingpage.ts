@@ -432,8 +432,8 @@ export interface FooterContent {
       alt: "Monarch Painters Logo"
     },
     legalLinks: [
-      { name: "Privacy Policy", path: "#" },
-      { name: "Terms of Service", path: "#" },
+      { name: "Privacy Policy", path: "/privacy-policy"  },
+      { name: "Terms of Service", path:"/terms-of-service"  },
       
     ]
   };

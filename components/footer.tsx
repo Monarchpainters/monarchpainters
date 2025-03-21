@@ -126,13 +126,13 @@ export default function Footer() {
               </p>
               <div className="flex space-x-4 md:space-x-6 mt-4 md:mt-0">
                 {footerContent.legalLinks.map((link, index) => (
-                  <a 
+                  <Link 
                     key={index}
                     href={link.path} 
                     className="text-xs md:text-sm text-blue-100/90 hover:text-[#e6ab65] transition-colors"
                   >
                     {link.name}
-                  </a>
+                  </Link>
                 ))}
                 <ConsentRevocationLink className="text-xs md:text-sm text-blue-100/90 hover:text-[#e6ab65] transition-colors" />
               </div>

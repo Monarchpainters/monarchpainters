@@ -51,7 +51,7 @@ export function CookieBanner({ privacyPolicyUrl }: CookieBannerProps) {
                   <p className="text-white/90 text-sm md:text-base font-display">
                     We use cookies to enhance your browsing experience, serve personalized ads or content, and analyze our traffic. By clicking "Accept All", you consent to our use of cookies. 
                     <Link 
-                      href={privacyPolicyUrl} 
+                      href="/privacy-policy" 
                       className="text-[#e6ab65] underline hover:text-[#e6ab65]/80 transition-colors"
                     >
                       Privacy Policy
