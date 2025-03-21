@@ -4,7 +4,6 @@ function Testimonials() {
   const widgetId = process.env.NEXT_PUBLIC_TRUSTMARY_WIDGET_ID;
   const trustmaryWidgetCode = `
     <div class="trustmary-widget" data-trustmary-widget="${widgetId}"></div>
-    <script src="https://widget.trustmary.com/${widgetId}"></script>
 
   `;
   return (

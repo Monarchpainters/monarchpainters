@@ -95,9 +95,9 @@ export default function RootLayout({
           <Navbar />
           {children}
         </ConsentManager>
-        {/* <script src="https://widget.trustmary.com/g0frZ_zB"></script> */}
-        {/* <script src="https://widget.trustmary.com/KWmPmkK1_"></script> */}
+        <script src="https://widget.trustmary.com/${widgetId}"></script>
 
+     
       </body>
     </html>
   )
