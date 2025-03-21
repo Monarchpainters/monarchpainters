@@ -5,6 +5,7 @@ import Link from 'next/link';
 import { motion, AnimatePresence } from 'framer-motion';
 import { useCookieConsent } from '@/hooks/use-cookie-consent';
 import { cn } from '@/lib/utils';
+import { Suspense } from 'react';
 
 interface CookieBannerProps {
   privacyPolicyUrl: string;
@@ -32,6 +33,7 @@ export function CookieBanner({ privacyPolicyUrl }: CookieBannerProps) {
   }
 
   return (
+    <Suspense fallback={null}>
     <AnimatePresence>
       {isPending && (
         <motion.div
@@ -46,7 +48,7 @@ export function CookieBanner({ privacyPolicyUrl }: CookieBannerProps) {
               <div className="flex flex-col md:flex-row gap-4 md:items-center justify-between">
                 <div className="flex-1">
                   <h3 className="text-lg font-semibold text-[#e6ab65] mb-2">Cookie Consent</h3>
-                  <p className="text-white/90 text-sm md:text-base">
+                  <p className="text-white/90 text-sm md:text-base font-display">
                     We use cookies to enhance your browsing experience, serve personalized ads or content, and analyze our traffic. By clicking "Accept All", you consent to our use of cookies. 
                     <Link 
                       href={privacyPolicyUrl} 
@@ -82,5 +84,6 @@ export function CookieBanner({ privacyPolicyUrl }: CookieBannerProps) {
         </motion.div>
       )}
     </AnimatePresence>
+    </Suspense>
   );
 }
