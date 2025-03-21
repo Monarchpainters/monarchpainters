@@ -1,7 +1,7 @@
 import React from 'react';
 
 function Testimonials() {
-  const widgetId = process.env.NEXT_PUBLIC_TRUSTMARY_WIDGET_ID;
+  const widgetId = "KWmPmkK1_";
   const trustmaryWidgetCode = `
     <div class="trustmary-widget" data-trustmary-widget="${widgetId}"></div>
 
