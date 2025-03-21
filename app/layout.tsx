@@ -1,41 +1,12 @@
-// import type React from "react"
-// import "./globals.css"
-// import type { Metadata } from "next"
-// import { Inter, Playfair_Display } from "next/font/google"
-
-// const inter = Inter({ subsets: ["latin"], variable: "--font-inter" })
-// const playfair = Playfair_Display({ subsets: ["latin"], variable: "--font-playfair" })
-
-// export const metadata: Metadata = {
-//   title: "Monarch Painters | Elevate Your Space with Timeless Elegance",
-//   description: "Expert Painting & Decorating in Staffordshire",
-//     generator: 'v0.dev'
-// }
-
-// export default function RootLayout({
-//   children,
-// }: {
-//   children: React.ReactNode
-// }) {
-//   return (
-//     <html lang="en">
-//       <body className={`${inter.variable} ${playfair.variable} font-sans bg-[#f8f8f8] text-[#003366]`}>
-//         {children}
-//       </body>
-//     </html>
-//   )
-// }
-
-
-
-// import './globals.css'
+'use client'
 
 import type React from "react"
 import "./globals.css"
-import type { Metadata } from "next"
 import { Inter, Playfair_Display } from "next/font/google"
 import dynamic from 'next/dynamic'
 import Head from 'next/head'
+import LoadingScreen from "@/components/LoadingScreen"
+import { useState, useEffect } from 'react'
 
 const Navbar = dynamic(() => import('../components/Navbar'), {
   ssr: true
@@ -48,16 +19,17 @@ const ConsentManager = dynamic(() => import('../components/ConsentManager').then
 const inter = Inter({ subsets: ["latin"], variable: "--font-inter" })
 const playfair = Playfair_Display({ subsets: ["latin"], variable: "--font-playfair" })
 
-export const metadata: Metadata = {
-  title: "Monarch Painters | Elevate Your Space with Timeless Elegance",
-  description: "Expert Painting & Decorating in Staffordshire",
-}
-
 export default function RootLayout({
   children,
 }: {
   children: React.ReactNode
 }) {
+  const [isLoading, setIsLoading] = useState(true)
+
+  useEffect(() => {
+    setIsLoading(false)
+  }, [])
+
   return (
     <html lang="en">
       <head>
@@ -119,6 +91,7 @@ export default function RootLayout({
       </head>
       <body className={`${inter.variable} ${playfair.variable} font-sans bg-[#f8f8f8] text-[#003366]`}>
         <ConsentManager privacyPolicyUrl="/privacy">
+          <LoadingScreen isLoading={isLoading} />
           <Navbar />
           {children}
         </ConsentManager>
