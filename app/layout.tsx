@@ -39,28 +39,6 @@ export default function RootLayout({
         <script
           dangerouslySetInnerHTML={{
             __html: `
-              (function(w,d,s,l,i){
-                w[l]=w[l]||[];
-                w[l].push({'gtm.start': new Date().getTime(),event:'gtm.js'});
-                var f=d.getElementsByTagName(s)[0],
-                    j=d.createElement(s),
-                    dl=l!='dataLayer'?'&l='+l:'';
-                j.async=true;
-                j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;
-                j.onload = function() {
-                  console.log('%cGTM Debug: Google Tag Manager loaded successfully', 'color: green; font-weight: bold');
-                };
-                j.onerror = function() {
-                  console.warn('%cGTM Debug: Google Tag Manager failed to load', 'color: red; font-weight: bold');
-                };
-                f.parentNode.insertBefore(j,f);
-              })(window,document,'script','dataLayer','GTM-NXNZWJVK');
-            `
-          }}
-        />
-        <script
-          dangerouslySetInnerHTML={{
-            __html: `
               (function (w,d,s,o,r,js,fjs) {
                 w[r]=w[r]||function() {(w[r].q = w[r].q || []).push(arguments)}
                 w[r]('app', 'DN9v-ZA4Aa');
@@ -116,7 +94,7 @@ export default function RootLayout({
       </head>
       <body className={`${inter.variable} ${playfair.variable} font-sans bg-[#f8f8f8] text-[#003366]`}>
         {/* Google Tag Manager (noscript) */}
-        {/* <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-NXNZWJVK" height="0" width="0" style={{display: 'none', visibility: 'hidden'}}></iframe></noscript> */}
+        <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-NXNZWJVK" height="0" width="0" style={{display: 'none', visibility: 'hidden'}}></iframe></noscript>
         {/* End Google Tag Manager (noscript) */}
        
 
