@@ -10,6 +10,7 @@ import { services, professionalTools, serviceAreas as serviceAreasData, premiumM
 import Tools from '@/components/tools';
 import Features from './features';
 import Link from 'next/link';
+import { sendGTMEvent } from '@next/third-parties/google';
 
 export default function Services() {
   // Service tiers with pricing information
@@ -326,7 +327,11 @@ export default function Services() {
         </div>
       </div>
    
-        
+      <button
+        onClick={() => sendGTMEvent({ event: 'buttonClicked', value: 'xyz' })}
+      >
+        Send Event
+      </button>
       <FAQ/>
       
       <Footer/>

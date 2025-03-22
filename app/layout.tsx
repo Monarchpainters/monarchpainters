@@ -35,7 +35,6 @@ export default function RootLayout({
     <html lang="en">
       <head>
      
-<GoogleTagManager gtmId="GTM-NXNZWJVK" />
         <script
           dangerouslySetInnerHTML={{
             __html: `
@@ -94,7 +93,7 @@ export default function RootLayout({
       </head>
       <body className={`${inter.variable} ${playfair.variable} font-sans bg-[#f8f8f8] text-[#003366]`}>
         {/* Google Tag Manager (noscript) */}
-        <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-NXNZWJVK" height="0" width="0" style={{display: 'none', visibility: 'hidden'}}></iframe></noscript>
+        {/* <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-NXNZWJVK" height="0" width="0" style={{display: 'none', visibility: 'hidden'}}></iframe></noscript> */}
         {/* End Google Tag Manager (noscript) */}
        
 
@@ -103,11 +102,14 @@ export default function RootLayout({
           <LoadingScreen isLoading={isLoading} />
           <Navbar />
           {children}
+          <GoogleTagManager gtmId="GTM-NXNZWJVK" />
         {/* </ConsentManager> */}
         {/* <script src="https://widget.trustmary.com/KWmPmkK1_"></script> */}
 
      
       </body>
+      
+
     </html>
   )
 }
