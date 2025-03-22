@@ -233,7 +233,7 @@ export default function Navbar() {
                 </Link>
                 <a
                   href="tel:+447437531733"
-                  className="block w-full text-center px-4 py-2 bg-[#711f50] text-[#e6ab65] rounded-full hover:bg-[#e6ab65] hover:text-[#711f50] transition-colors duration-300 text-base sm:text-lg font-medium flex items-center justify-center gap-2"
+                  className="block w-full text-center px-4 py-2 bg-[#711f50] text-[#e6ab65] rounded-full hover:bg-[#e6ab65] hover:text-[#711f50] transition-colors duration-300 text-base sm:text-lg font-medium items-center justify-center gap-2"
                   onClick={() => setIsMenuOpen(false)}
                 >
                   <FaPhone className="w-4 h-4" />
