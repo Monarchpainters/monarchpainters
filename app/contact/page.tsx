@@ -71,10 +71,10 @@ function App() {
 
     try {
       const result = await emailjs.sendForm(
-        "service_phr7fot",
-        "template_p1r00so",
+        "service_mqr4s2j",
+        "template_1xxpvvi",
         form.current,
-        "kxChz_wHnv-TGJ3gB"
+        "0XupFFA6GDf55j8wN"
       );
 
       if (result.status === 200) {
