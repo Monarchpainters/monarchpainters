@@ -34,7 +34,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <head>
-     
+        <GoogleTagManager gtmId="GTM-NXNZWJVK" />
         <script
           dangerouslySetInnerHTML={{
             __html: `
@@ -102,7 +102,6 @@ export default function RootLayout({
           <LoadingScreen isLoading={isLoading} />
           <Navbar />
           {children}
-          <GoogleTagManager gtmId="GTM-NXNZWJVK" />
         {/* </ConsentManager> */}
         {/* <script src="https://widget.trustmary.com/KWmPmkK1_"></script> */}
 
