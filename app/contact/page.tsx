@@ -1,5 +1,6 @@
 "use client"
 import React, { useState, useEffect, useRef } from 'react';
+import { sendGTMEvent } from '@next/third-parties/google';
 import { MessageSquare, User, Phone, Facebook, Instagram, Twitter, Youtube, Globe, Zap, Clock, Award, Users, CheckCircle, MapPin, Mail, ArrowRight } from 'lucide-react';
 import { FaTiktok } from 'react-icons/fa';
 import { motion, AnimatePresence } from 'framer-motion';
@@ -47,6 +48,12 @@ function App() {
 
  
 
+  const handleButtonClick = () => {
+    sendGTMEvent({
+      event: "start_project_click"
+    });
+  };
+
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setSubmitStatus('loading');
@@ -64,10 +71,10 @@ function App() {
 
     try {
       const result = await emailjs.sendForm(
-        "service_mqr4s2j",
-        "template_1xxpvvi",
+        "service_phr7fot",
+        "template_p1r00so",
         form.current,
-        "0XupFFA6GDf55j8wN"
+        "kxChz_wHnv-TGJ3gB"
       );
 
       if (result.status === 200) {
@@ -395,21 +402,36 @@ function App() {
                   </div>
                 </motion.div>
 
-                <motion.button
-                  type="submit"
-                  className="w-full bg-gradient-to-r from-[#711f50] to-[#e6ab65] text-white py-4 px-8 rounded-xl font-medium text-lg hover:opacity-90 transition-all duration-300 relative overflow-hidden group"
-                  whileHover={{ scale: 1.02 }}
-                  whileTap={{ scale: 0.98 }}
-                  variants={formItemVariants}
-                >
-                  <span className="relative z-10">Start Your Project</span>
-                  <motion.div 
-                    className="absolute inset-0 bg-gradient-to-r from-[#e6ab65] to-[#711f50] opacity-0 group-hover:opacity-100 transition-all duration-500"
-                    initial={{ x: '-100%' }}
-                    whileHover={{ x: 0 }}
-                    transition={{ type: "spring", stiffness: 100 }}
-                  />
-                </motion.button>
+                    <div className="flex justify-end mt-6">
+                    <motion.button
+                      type="submit"
+                      className="w-full bg-gradient-to-r from-[#711f50] to-[#e6ab65] text-white py-4 px-8 rounded-xl font-medium text-lg hover:opacity-90 transition-all duration-300 relative overflow-hidden group"
+                      whileHover={{ scale: 1.02 }}
+                      whileTap={{ scale: 0.98 }}
+                      disabled={submitStatus === 'loading'}
+                      onClick={handleButtonClick}
+                    >
+                      <span className="relative z-10">
+                        {submitStatus === 'loading' ? (
+                          <span className="flex items-center gap-2">
+                            <svg className="animate-spin h-5 w-5" viewBox="0 0 24 24">
+                              <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4" fill="none" />
+                              <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z" />
+                            </svg>
+                            Sending...
+                          </span>
+                        ) : (
+                          'Start Your Project'
+                        )}
+                      </span>
+                      <motion.div
+                        className="absolute inset-0 bg-gradient-to-r from-[#e6ab65] to-[#711f50] opacity-0 group-hover:opacity-100 transition-all duration-500"
+                        initial={{ x: "-100%" }}
+                        whileHover={{ x: 0 }}
+                        transition={{ type: "spring", stiffness: 100 }}
+                      />
+                    </motion.button>
+                  </div>
               </motion.form>
             </div>
           </motion.div>
