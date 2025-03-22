@@ -3,7 +3,7 @@ import { Facebook, Globe, Mail, MapPin, Phone, Twitter, Youtube, Zap, Instagram 
 import { FaTiktok } from 'react-icons/fa';
 import Image from 'next/image';
 import Link from 'next/link';
-import { ConsentRevocationLink } from './ConsentRevocationLink';
+// import { ConsentRevocationLink } from './ConsentRevocationLink';
 import { footerContent } from '@/data/landingpage';
 import React from 'react';
 
@@ -134,7 +134,7 @@ export default function Footer() {
                     {link.name}
                   </Link>
                 ))}
-                <ConsentRevocationLink className="text-xs md:text-sm text-blue-100/90 hover:text-[#e6ab65] transition-colors" />
+                {/* <ConsentRevocationLink className="text-xs md:text-sm text-blue-100/90 hover:text-[#e6ab65] transition-colors" /> */}
               </div>
             </div>
           </div>

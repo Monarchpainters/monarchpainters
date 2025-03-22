@@ -3,7 +3,8 @@
 import { useState, useEffect } from "react"
 import Link from "next/link"
 import { motion, AnimatePresence } from "framer-motion"
-import { FaWhatsapp } from "react-icons/fa"
+import { FaWhatsapp, FaPhone } from "react-icons/fa"
+import { Phone } from "lucide-react"
 
 const navItems = [
   { name: "Home", href: "/" },
@@ -126,6 +127,20 @@ export default function Navbar() {
                 </Link>
               </motion.li>
             ))}
+             <motion.li
+              initial={{ opacity: 0, y: -20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: navItems.length * 0.1 + 0.6 }}
+              className="relative group"
+            >
+              <a
+                href="tel:+447437531733"
+                className=" hover:text-[#711f50]  flex items-center gap-2 relative px-2 py-2 bg-[#e6ab65] text-[#711f50] rounded-full hover:bg-white transition-colors duration-300 text-base lg:text-lg font-medium"
+              >
+                <Phone className="w-4 h-4" />
+                
+              </a>
+            </motion.li>
             <motion.li
               initial={{ opacity: 0, y: -20 }}
               animate={{ opacity: 1, y: 0 }}
@@ -139,6 +154,7 @@ export default function Navbar() {
                 Contact
               </Link>
             </motion.li>
+           
           </ul>
 
           <motion.button
@@ -206,7 +222,7 @@ export default function Navbar() {
                 animate={{ x: 0, opacity: 1 }}
                 exit={{ x: -20, opacity: 0 }}
                 transition={{ duration: 0.2, delay: 0.2 }}
-                className="px-4 pb-4"
+                className="px-4 pb-4 space-y-2"
               >
                 <Link
                   href="/contact"
@@ -215,6 +231,14 @@ export default function Navbar() {
                 >
                   Contact
                 </Link>
+                <a
+                  href="tel:+447437531733"
+                  className="block w-full text-center px-4 py-2 bg-[#711f50] text-[#e6ab65] rounded-full hover:bg-[#e6ab65] hover:text-[#711f50] transition-colors duration-300 text-base sm:text-lg font-medium flex items-center justify-center gap-2"
+                  onClick={() => setIsMenuOpen(false)}
+                >
+                  <FaPhone className="w-4 h-4" />
+                  Call Now
+                </a>
               </motion.div>
             </motion.div>
           )}

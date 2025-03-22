@@ -7,14 +7,15 @@ import dynamic from 'next/dynamic'
 import Head from 'next/head'
 import LoadingScreen from "@/components/LoadingScreen"
 import { useState, useEffect } from 'react'
+import { GoogleTagManager } from '@next/third-parties/google'
 
 const Navbar = dynamic(() => import('../components/Navbar'), {
   ssr: true
 })
 
-const ConsentManager = dynamic(() => import('../components/ConsentManager').then(mod => mod.ConsentManager), {
-  ssr: false
-})
+// const ConsentManager = dynamic(() => import('../components/ConsentManager').then(mod => mod.ConsentManager), {
+//   ssr: false
+// })
 
 const inter = Inter({ subsets: ["latin"], variable: "--font-inter" })
 const playfair = Playfair_Display({ subsets: ["latin"], variable: "--font-playfair" })
@@ -33,6 +34,30 @@ export default function RootLayout({
   return (
     <html lang="en">
       <head>
+     
+<GoogleTagManager gtmId="GTM-NXNZWJVK" />
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `
+              (function(w,d,s,l,i){
+                w[l]=w[l]||[];
+                w[l].push({'gtm.start': new Date().getTime(),event:'gtm.js'});
+                var f=d.getElementsByTagName(s)[0],
+                    j=d.createElement(s),
+                    dl=l!='dataLayer'?'&l='+l:'';
+                j.async=true;
+                j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;
+                j.onload = function() {
+                  console.log('%cGTM Debug: Google Tag Manager loaded successfully', 'color: green; font-weight: bold');
+                };
+                j.onerror = function() {
+                  console.warn('%cGTM Debug: Google Tag Manager failed to load', 'color: red; font-weight: bold');
+                };
+                f.parentNode.insertBefore(j,f);
+              })(window,document,'script','dataLayer','GTM-NXNZWJVK');
+            `
+          }}
+        />
         <script
           dangerouslySetInnerHTML={{
             __html: `
@@ -65,7 +90,7 @@ export default function RootLayout({
         />
         <link
           rel="preload"
-          href="/fonts/QTGaromand.otf"
+          href="/QTGaromand.otf"
           as="font"
           type="font/otf"
           crossOrigin="anonymous"
@@ -90,12 +115,18 @@ export default function RootLayout({
         <meta name="theme-color" content="#711f50" />
       </head>
       <body className={`${inter.variable} ${playfair.variable} font-sans bg-[#f8f8f8] text-[#003366]`}>
-        <ConsentManager privacyPolicyUrl="/privacy">
+        {/* Google Tag Manager (noscript) */}
+        {/* <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-NXNZWJVK" height="0" width="0" style={{display: 'none', visibility: 'hidden'}}></iframe></noscript> */}
+        {/* End Google Tag Manager (noscript) */}
+       
+
+
+        {/* <ConsentManager privacyPolicyUrl="/privacy"> */}
           <LoadingScreen isLoading={isLoading} />
           <Navbar />
           {children}
-        </ConsentManager>
-        <script src="https://widget.trustmary.com/KWmPmkK1_"></script>
+        {/* </ConsentManager> */}
+        {/* <script src="https://widget.trustmary.com/KWmPmkK1_"></script> */}
 
      
       </body>

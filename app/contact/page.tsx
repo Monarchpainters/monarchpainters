@@ -51,6 +51,15 @@ function App() {
     e.preventDefault();
     setSubmitStatus('loading');
 
+    // Push contact form submission event to dataLayer
+    if (typeof window !== 'undefined' && window.dataLayer) {
+      window.dataLayer.push({
+        'event': 'contact_form_submit',
+        'formType': 'contact',
+        'formLocation': 'contact_page'
+      });
+    }
+
     if (!form.current) return;
 
     try {
