@@ -48,9 +48,17 @@ function App() {
 
  
 
+  // const handleButtonClick = () => {
+  //   sendGTMEvent({
+  //     event: "start_project_click"
+  //   });
+  // };
+
   const handleButtonClick = () => {
     sendGTMEvent({
-      event: "start_project_click"
+      event: "start_project_click",
+      category: "Button",
+      label: "Start Your Project",
     });
   };
 
@@ -475,7 +483,7 @@ function App() {
           </motion.div>
 
           <motion.div 
-            className="md:absolute relative top-8 left-8 bg-slate-900/90 backdrop-blur-md p-8 rounded-xl border border-white/10 max-w-md mt-4 md:mt-0"
+            className="md:absolute relative top-8 lg:left-8 bg-slate-900/90 backdrop-blur-md p-8 rounded-xl border border-white/10 max-w-md mt-4 md:mt-0"
             initial={{ x: -50, opacity: 0 }}
             whileInView={{ x: 0, opacity: 1 }}
             transition={{ delay: 0.5, duration: 0.5 }}
@@ -492,7 +500,7 @@ function App() {
               </div>
               <div className="flex items-start space-x-4">
                 <Phone className="w-6 h-6 text-[#e6ab65] mt-1" />
-                <a href='07437531733' className="text-white">07437531733</a>
+                <a href='tel:07437531733' className="text-white">07437531733</a>
               </div>
               <div className="flex items-start space-x-4">
                 <Mail className="w-6 h-6 text-[#e6ab65] mt-1" />

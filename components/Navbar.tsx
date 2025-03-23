@@ -97,8 +97,7 @@ export default function Navbar() {
                 alt="Monarch Painters Logo" 
                 className="w-8 sm:w-10 md:w-12" 
               />
-              <span className=" font-['navlogo'] text-xs
-               sm:text-xs md:text-md leading-loose" style={{ color: '#e6ab65' }}>
+              <span className="font-['navlogo'] text-[10px] sm:text-xs md:text-sm leading-loose" style={{ color: '#e6ab65' }}>
                 MONARCH PAINTERS
               </span>
             </Link>
@@ -157,36 +156,44 @@ export default function Navbar() {
            
           </ul>
 
-          <motion.button
-            className="md:hidden p-2 rounded-lg hover:bg-[#711f50]/20 transition-colors"
-            onClick={() => setIsMenuOpen(!isMenuOpen)}
-            whileTap={{ scale: 0.95 }}
-            aria-label="Toggle menu"
-          >
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              className="w-6 h-6 text-[#e6ab65]"
-              fill="none"
-              viewBox="0 0 24 24"
-              stroke="currentColor"
+          <div className="flex items-center gap-2 md:hidden">
+            <a
+              href="tel:+447437531733"
+              className="hover:text-[#711f50] flex items-center gap-2 relative px-2 py-2 bg-[#e6ab65] text-[#711f50] rounded-full hover:bg-white transition-colors duration-300 text-base lg:text-lg font-medium"
             >
-              {isMenuOpen ? (
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth={2}
-                  d="M6 18L18 6M6 6l12 12"
-                />
-              ) : (
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth={2}
-                  d="M4 6h16M4 12h16M4 18h16"
-                />
-              )}
-            </svg>
-          </motion.button>
+              <Phone className="w-4 h-4" />
+            </a>
+            <motion.button
+              className="p-2 rounded-lg hover:bg-[#711f50]/20 transition-colors"
+              onClick={() => setIsMenuOpen(!isMenuOpen)}
+              whileTap={{ scale: 0.95 }}
+              aria-label="Toggle menu"
+            >
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                className="w-6 h-6 text-[#e6ab65]"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+              >
+                {isMenuOpen ? (
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth={2}
+                    d="M6 18L18 6M6 6l12 12"
+                  />
+                ) : (
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth={2}
+                    d="M4 6h16M4 12h16M4 18h16"
+                  />
+                )}
+              </svg>
+            </motion.button>
+          </div>
         </div>
 
         <AnimatePresence>
@@ -231,14 +238,6 @@ export default function Navbar() {
                 >
                   Contact
                 </Link>
-                <a
-                  href="tel:+447437531733"
-                  className="block w-full text-center px-4 py-2 bg-[#711f50] text-[#e6ab65] rounded-full hover:bg-[#e6ab65] hover:text-[#711f50] transition-colors duration-300 text-base sm:text-lg font-medium items-center justify-center gap-2"
-                  onClick={() => setIsMenuOpen(false)}
-                >
-                  <FaPhone className="w-4 h-4" />
-                  Call Now
-                </a>
               </motion.div>
             </motion.div>
           )}
