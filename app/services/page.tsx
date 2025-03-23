@@ -327,11 +327,7 @@ export default function Services() {
         </div>
       </div>
    
-      <button
-        onClick={() => sendGTMEvent({ event: 'buttonClicked', value: 'xyz' })}
-      >
-        Send Event
-      </button>
+      
       <FAQ/>
       
       <Footer/>
