@@ -8,6 +8,7 @@ import Head from 'next/head'
 import LoadingScreen from "@/components/LoadingScreen"
 import { useState, useEffect } from 'react'
 import { GoogleTagManager } from '@next/third-parties/google'
+import { websiteSchema, organizationSchema, localBusinessSchema, breadcrumbSchema } from './schema';
 
 const Navbar = dynamic(() => import('../components/Navbar'), {
   ssr: true
@@ -90,6 +91,22 @@ export default function RootLayout({
         />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <meta name="theme-color" content="#711f50" />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(websiteSchema) }}
+        />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(organizationSchema) }}
+        />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(localBusinessSchema) }}
+        />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }}
+        />
       </head>
       <body className={`${inter.variable} ${playfair.variable} font-sans bg-[#f8f8f8] text-[#003366]`}>
         {/* Google Tag Manager (noscript) */}

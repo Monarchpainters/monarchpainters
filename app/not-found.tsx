@@ -119,7 +119,7 @@ export default function NotFound() {
           >
             <Button
               onClick={() => router.push('/')}
-              className="bg-burgundy-800 hover:bg-burgundy-900 text-white px-8 py-3 rounded-lg font-semibold transition-colors duration-300"
+              className="bg-[#711f50] hover:bg-[#511237] rounded-full  text-white px-8 py-3 font-semibold transition-colors duration-300"
             >
               Return Home
             </Button>
